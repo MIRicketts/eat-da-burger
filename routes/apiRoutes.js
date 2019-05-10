@@ -3,7 +3,7 @@ const burger = require("../models/burger");
 module.exports = app => {
 
   // GET all burgers
-  app.get("/api/cats", function(req,res){
+  app.get("/api/burgers", function(req,res){
     burgers.findAll()
     .then(dbBurgerData => res.json(dbBurgerData))
     .catch(err => {
@@ -13,7 +13,7 @@ module.exports = app => {
   });
 
   // create/POST a new burger
-  app.post("/api/cats", function(req, res){
+  app.post("/api/burgers", function(req, res){
 
     burgers.create(req.body)
     .then(dbBurgerData => res.json(dbBurgerData))
