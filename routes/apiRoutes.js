@@ -1,4 +1,4 @@
-const burger = require("../models/burger");
+const burgers = require("../models/burger");
 
 module.exports = app => {
 
@@ -36,6 +36,7 @@ module.exports = app => {
 
   // PUT/update a burgers devoured to true/false by id
   app.put("/api/burgers/:id", function(req, res){
+    console.log('put route hit');
     burgers.update(req.body.devoured, req.params.id)
     .then(dbBurgerData => res.json(dbBurgerData))
     .catch(err => {

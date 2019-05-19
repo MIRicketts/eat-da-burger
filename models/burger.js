@@ -1,3 +1,7 @@
+// Models folder is talking to the database
+// Connnection.js is connecting mysql database to page
+// burgers.js is reading the info need from mysql database
+
 const connection = require("./connection");
 
 // find all burgers
@@ -43,7 +47,7 @@ const update = (devour, burgerId) => {
     devour = (devour === "true") ?
       true : false;
 
-    connection.query("UPDATE burgers SET devour = ? WHERE id = ?", [devourValue, burgerId], function (err, dbBurgerData) {
+    connection.query("UPDATE burgers SET devoured = ? WHERE id = ?", [devour, burgerId], function (err, dbBurgerData) {
       if (err) {
         return reject(err)
       } else if (dbBurgerData.changeRows === 0) {
@@ -66,7 +70,7 @@ const remove = (burgerId) => {
       if (err){
         return reject(err);
       }
-      else if(dbBurgerData.affectedRows === o ){
+      else if(dbBurgerData.affectedRows === 0 ){
         return rejected({ message: "You may have used the wrong id"})
       }
       else {

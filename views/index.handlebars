@@ -6,8 +6,8 @@
   <div class="row">
     {{!-- column for form --}}
     <div class="col-12 col-md-3">
-      <form id="cat-form">
-        <input class="form-control" id="name-input" placeholder="Burgers Name"/>
+      <form id="burger-form">
+        <input class="form-control" id="name-input" placeholder="Burgers name"/>
         <button class="btn btn-success btn-block" type="submit">
           Add Burger!
         </button>
@@ -25,13 +25,13 @@
             {{!-- use handlebars to print burgers that aren't devoured --}}
             {{#each burgerData}}
               {{!-- this is the same as saying !== --}}
-              {{#unless sleepy}}
+              {{#unless devoured}}
                 <li class="list-group-item d-flex">
-                  {{name}} 
+                  {{burger_name}} 
                   <span class="ml-auto">
                     <button 
                       data-id="{{id}}"
-                      data-sleepy="true"
+                      data-devoured="true"
                       class="btn btn-sm btn-info update-burger"
                       >
                     Devoured
@@ -55,18 +55,15 @@
         <div class="col-12 col-md-6">
           <h2>Devoured</h2>
           <ul class="list-group">
-            {{!-- use handlebars to print cats that aren't sleepy --}}
-            {{#each burger}}
+          
+            {{#each burgerData}}
             {{!-- this is the same as saying !== --}}
             {{#if devoured}}
             <li class="list-group-item d-flex">
-              {{name}}
-              <span class="ml-auto">
-                <button data-id="{{id}}" data-devoured="false" class="btn btn-sm btn-info update-burger">
-                  Something goes here!!!
-                </button>
+              {{burger_name}}
+              
         
-                {{!-- delete cat --}}
+                {{!-- delete burger --}}
                 <button data-id="{{id}}" class="btn btn-sm btn-danger delete-burger">
                    Delete Burger
                 </button>
@@ -82,4 +79,4 @@
   </div>
 </div>
 
-<script src="./js/burgers.js"></script>
+<script src="/js/burgers.js"></script>
